@@ -30,7 +30,13 @@ final class URLSessionHTTPClientTests: XCTestCase {
         await fulfillment(of: [exp])
     }
     
-    
+    func test_fetchFromURL_receivesErrorOnErrorResponse() async throws {
+        let error = anyNSError()
+        URLProtocolStub.stub(data: nil, response: nil, error: error)
+        
+       try await makeSUT().get(from: anyURL())
+       XCTFail("Shouldn't pass this block, expecting error thrown")
+    }
     
     // MARK: - Helpers
     
