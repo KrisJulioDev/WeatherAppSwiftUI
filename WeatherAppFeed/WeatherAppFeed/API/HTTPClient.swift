@@ -12,7 +12,7 @@ public protocol HTTPClientTask {
 }
 
 public protocol HTTPClient {
-    typealias Result = (Data, URLResponse)
+    typealias Result = (Data, HTTPURLResponse)
   
     func get(from url: URL) async throws -> Result
 }

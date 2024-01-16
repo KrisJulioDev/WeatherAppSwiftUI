@@ -15,9 +15,23 @@ public final class URLSessionHTTPClient: HTTPClient {
     public init(session: URLSession) {
         self.session = session
     }
+    
+    enum HTTPError: Swift.Error {
+        case invalidResponse
+        case fetchError(Error)
+    }
       
     @discardableResult
     public func get(from url: URL) async throws -> HTTPClient.Result {
-        try await session.data(from: url)
+        do {
+            let (data, response) = try await session.data(from: url)
+            if let httpResponse = response as? HTTPURLResponse {
+                return (data, httpResponse)
+            } else {
+                throw HTTPError.invalidResponse
+            }
+        } catch {
+            throw HTTPError.fetchError(error)
+        }
     }
 }

@@ -34,8 +34,25 @@ final class URLSessionHTTPClientTests: XCTestCase {
         let error = anyNSError()
         URLProtocolStub.stub(data: nil, response: nil, error: error)
         
-       try await makeSUT().get(from: anyURL())
-       XCTFail("Shouldn't pass this block, expecting error thrown")
+        do {
+            try await makeSUT().get(from: anyURL())
+            XCTFail("Shouldn't pass this block, expecting error thrown")
+        } catch {
+            XCTAssertNotNil(error, "expects error")
+        }
+    }
+    
+    func test_fetchFromURL_receivesDataResponseWithData() async throws {
+        let anyData = anyData()
+        let anyResponse = anyURLResponse()
+        
+        URLProtocolStub.stub(data: anyData, response: anyResponse, error: nil)
+        
+        let (data, response) = try await makeSUT().get(from: anyURL())
+        
+        XCTAssertEqual(data, anyData, "Expects the same data")
+        XCTAssertEqual(response.url, anyResponse.url, "Expects the same url")
+        XCTAssertEqual(response.statusCode, anyResponse.statusCode, "Expects the same status code")
     }
     
     // MARK: - Helpers
@@ -55,6 +72,14 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
     
     private func anyNSError() -> NSError {
-        return NSError(domain: "any error", code: 0)
+        NSError(domain: "any error", code: 0)
+    }
+    
+    private func anyData() -> Data {
+        Data("any data".utf8)
+    }
+    
+    private func anyURLResponse() -> HTTPURLResponse {
+        HTTPURLResponse(url: anyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
     }
 }
