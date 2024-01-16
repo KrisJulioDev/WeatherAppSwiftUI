@@ -22,6 +22,8 @@
 		35E6AD2B2B56B99900331075 /* WeatherItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD2A2B56B99900331075 /* WeatherItemMapper.swift */; };
 		35E6AD2E2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD2D2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift */; };
 		35E6AD312B56BB6900331075 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD302B56BB6900331075 /* SharedTestHelpers.swift */; };
+		35E6AD332B56BE5F00331075 /* WeatherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD322B56BE5F00331075 /* WeatherItem.swift */; };
+		35E6AD352B56BE7500331075 /* WeatherCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD342B56BE7500331075 /* WeatherCurrent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		35E6AD2A2B56B99900331075 /* WeatherItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItemMapper.swift; sourceTree = "<group>"; };
 		35E6AD2D2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		35E6AD302B56BB6900331075 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		35E6AD322B56BE5F00331075 /* WeatherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItem.swift; sourceTree = "<group>"; };
+		35E6AD342B56BE7500331075 /* WeatherCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCurrent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				35E6AD222B56B20E00331075 /* WeatherQuery.swift */,
+				35E6AD322B56BE5F00331075 /* WeatherItem.swift */,
+				35E6AD342B56BE7500331075 /* WeatherCurrent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -287,7 +293,9 @@
 				35E6AD182B56982300331075 /* HTTPClient.swift in Sources */,
 				35E6AD162B56981200331075 /* RemoteFeedLoader.swift in Sources */,
 				35E6AD212B56AE3B00331075 /* FeedEndpoint.swift in Sources */,
+				35E6AD332B56BE5F00331075 /* WeatherItem.swift in Sources */,
 				35E6AD1F2B569C9600331075 /* URLSessionHTTPClient.swift in Sources */,
+				35E6AD352B56BE7500331075 /* WeatherCurrent.swift in Sources */,
 				35E6AD2B2B56B99900331075 /* WeatherItemMapper.swift in Sources */,
 				35E6AD232B56B20E00331075 /* WeatherQuery.swift in Sources */,
 				35E6AD2E2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift in Sources */,
