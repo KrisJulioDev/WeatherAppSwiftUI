@@ -18,12 +18,14 @@ public enum FeedEndpoint {
             components.queryItems = [
                 URLQueryItem(name: "lat", value: query.latitude),
                 URLQueryItem(name: "lon", value: query.longitude),
-                URLQueryItem(name: "appid", value: apiKey), 
+                URLQueryItem(name: "appid", value: apiKey),
                 URLQueryItem(name: "units", value: query.unitParameter)
             ].compactMap { $0 }
             
             if let intervals = query.intervals {
-                components.query?.append(intervals)
+                components.queryItems?.append(
+                    URLQueryItem(name: "exclude", value: intervals)
+                )
             }
             
             return components.url!
