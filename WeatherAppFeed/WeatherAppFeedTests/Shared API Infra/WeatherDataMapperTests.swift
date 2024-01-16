@@ -19,7 +19,15 @@ final class WeatherDataMapperTests: XCTestCase {
                 try WeatherItemMapper.map(json, from: HTTPURLResponse(statusCode: code))
             )
         }
-    } 
+    }
+    
+    func test_map_throwsErrorOn200HTTPResponseWithInvalidJSON() {
+        let invalidJSON = Data("invalid json".utf8)
+        
+        XCTAssertThrowsError(
+            try WeatherItemMapper.map(invalidJSON, from: HTTPURLResponse(statusCode: 200))
+        )
+    }
 
     // MARK: Helper
     
