@@ -55,6 +55,19 @@ final class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertEqual(response.statusCode, anyResponse.statusCode, "Expects the same status code")
     }
     
+    func test_getFromURL_succeedsWithEmptyDataOnHTTPURLResponseWithNilData() async throws {
+        let anyResponse = anyURLResponse()
+        
+        URLProtocolStub.stub(data: nil, response: anyResponse, error: nil)
+        
+        let (data, response) = try await makeSUT().get(from: anyURL())
+        let emptyData = Data()
+
+        XCTAssertEqual(data, emptyData, "Expects no data received")
+        XCTAssertEqual(response.url, anyResponse.url, "Expects the same url")
+        XCTAssertEqual(response.statusCode, anyResponse.statusCode, "Expects the same status code")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> URLSessionHTTPClient {
