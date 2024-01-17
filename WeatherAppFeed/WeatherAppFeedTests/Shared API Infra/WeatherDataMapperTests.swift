@@ -58,7 +58,7 @@ final class WeatherDataMapperTests: XCTestCase {
     }
     
     private func makeValidItem() -> (model: WeatherItem, json: [String: Any]) {
-        let item = WeatherItem(id: 2643743, name: "London", temp: 271.79, feelsLike: 271.79, tempMin: 270.21, tempMax: 273.13, pressure: 1000, humidity: 84, visibility: 10000, windSpeed: 0.89, dt: 1705450380, clouds: 83, timezone: 0)
+        let item = WeatherItem(id: 2643743, name: "London", country: "US", temp: 271.79, feelsLike: 271.79, tempMin: 270.21, tempMax: 273.13, pressure: 1000, humidity: 84, visibility: 10000, windSpeed: 0.89, rain: 0.85, dt: 1705450380, clouds: 83, timezone: 0)
         
         let json = weatherJSON()
         
@@ -97,6 +97,9 @@ final class WeatherDataMapperTests: XCTestCase {
                 "clouds": [
                     "all": 83
                 ],
+            "rain": [
+                "lh": 0.85
+            ],
                 "dt": 1705450380,
                 "sys": [
                     "type": 2,

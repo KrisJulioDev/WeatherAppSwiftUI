@@ -171,13 +171,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35CA160A2B57EE8C009089F7 /* Resource Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Resource Views";
-			sourceTree = "<group>";
-		};
 		35CA16102B57F81C009089F7 /* Shared Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,7 +313,6 @@
 			children = (
 				35E6AD732B57889600331075 /* Feed Presenters */,
 				35E6AD682B577CE700331075 /* Feed UI */,
-				35E6AD672B577CC000331075 /* Feed Presentation */,
 				35E6AD542B577C9200331075 /* WeatherAppFeediOS.h */,
 			);
 			path = WeatherAppFeediOS;
@@ -332,13 +324,6 @@
 				35E6AD5E2B577C9200331075 /* WeatherAppFeediOSTests.swift */,
 			);
 			path = WeatherAppFeediOSTests;
-			sourceTree = "<group>";
-		};
-		35E6AD672B577CC000331075 /* Feed Presentation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Feed Presentation";
 			sourceTree = "<group>";
 		};
 		35E6AD682B577CE700331075 /* Feed UI */ = {
@@ -365,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				35CA16102B57F81C009089F7 /* Shared Helpers */,
-				35CA160A2B57EE8C009089F7 /* Resource Views */,
 				35E6AD742B5788A200331075 /* WeatherFeedViewPresenter.swift */,
 				35CA16062B57EB31009089F7 /* Feed.xcstrings */,
 			);
@@ -926,7 +910,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_ASSET_PATHS = "WeatherAppFeediOS/Feed\\ UI/feed.xcassets";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 99AUV9Q5LC;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -948,6 +932,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -962,7 +947,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_ASSET_PATHS = "WeatherAppFeediOS/Feed\\ UI/feed.xcassets";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 99AUV9Q5LC;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -984,6 +969,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
