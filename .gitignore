@@ -73,7 +73,9 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-config.json
+config.plist
+
+WeatherAppFeed/WeatherAppFeed/Helpers/config.plist
 
 ### Xcode ###
 # Xcode
