@@ -7,18 +7,6 @@
 
 import WeatherAppFeed
 import SwiftUI
- 
-protocol ResourceView {
-    associatedtype ResourceViewModel
-    
-    func display(_ viewModel: ResourceViewModel)
-}
-
-protocol ResourceErrorView {
-    associatedtype ResourceFeedErrorViewModel
-    
-    func display(_ viewModel: ResourceFeedErrorViewModel)
-}
 
 public class WeatherFeedErrorViewModel: ObservableObject {
     @Published private(set) var currentState: State = .noError
@@ -43,8 +31,8 @@ public class WeatherFeedErrorViewModel: ObservableObject {
 
 public class WeatherFeedViewPresenter: ObservableObject, 
                                         ResourceView, ResourceErrorView {
-    typealias ResourceViewModel = WeatherItemViewModel
-    typealias ResourceFeedErrorViewModel = WeatherFeedErrorViewModel
+    public typealias ResourceViewModel = WeatherItemViewModel
+    public typealias ResourceFeedErrorViewModel = WeatherFeedErrorViewModel
     
     @Published var itemViewModels: [WeatherItemViewModel] = []
     @Published var feedViewModel = WeatherFeedViewModel()

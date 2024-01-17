@@ -11,13 +11,19 @@ import WeatherAppFeediOS
 
 @main
 struct WeatherApp: App {
-    let presenter = WeatherFeedViewPresenter()
+    
+    private let loadResourcePresenter: LoadResourcePresenterAdapter = {
+        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        let viewPresenter = WeatherFeedViewPresenter()
+        return LoadResourcePresenterAdapter(client: client, presenter: viewPresenter)
+    }()
     
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                presenter.compose()
+                loadResourcePresenter.composeFeed()
             }
         }
     }
-} 
+}
+ 
