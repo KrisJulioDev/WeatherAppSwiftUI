@@ -27,15 +27,14 @@ struct WeatherFeed: View {
             viewModel.feed(with: presenter.itemViewModels)
             WeatherErrorView(viewModel: errorViewModel,
                              tapHandler: didTapError)
+            SearchBarView()
         }
         .onAppear {
             presenter.addWeather()
             presenter.addWeather()
             presenter.addWeather()
-        }
-        .navigationTitle(title)
-        .navigationBarTitleDisplayMode(.inline)
-    } 
+        } 
+    }
     
     private func didTapError() {
         presenter.display(WeatherError(currentState: .noError))

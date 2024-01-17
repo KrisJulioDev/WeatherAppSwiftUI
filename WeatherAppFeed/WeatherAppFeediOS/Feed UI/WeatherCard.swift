@@ -121,7 +121,7 @@ struct WeatherCard: View {
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 15)
-                    .stroke(.white.opacity(0.4), lineWidth: 4)
+                    .stroke(.primary.opacity(0.1), lineWidth: 4)
             )
             .background(
                 .thinMaterial
@@ -130,7 +130,7 @@ struct WeatherCard: View {
         }
         .overlay(
             RoundedRectangle(cornerRadius: 15)
-                .stroke(.black.opacity(0.2), lineWidth: 2)
+                .stroke(.primary.opacity(0.1), lineWidth: 2)
         )
         .shadow(radius: 5)
         .listRowBackground(Color.clear)

@@ -20,10 +20,10 @@ protocol ResourceErrorView {
     func display(_ viewModel: ResourceFeedErrorViewModel)
 }
 
-class WeatherFeedErrorViewModel: ObservableObject {
+public class WeatherFeedErrorViewModel: ObservableObject {
     @Published private(set) var currentState: State = .noError
     
-    enum State {
+    public enum State {
         case noError
         case noConnection(String)
     }
@@ -57,18 +57,20 @@ public class WeatherFeedViewPresenter: ObservableObject,
             comment: "Title for the feed view")
     }
     
-    func compose() -> some View {
+    public init() {}
+    
+    public func compose() -> some View {
         WeatherFeed(title: title)
             .environmentObject(self)
             .environmentObject(feedViewModel)
             .environmentObject(errorViewModel)
     }
     
-    func display(_ viewModel: WeatherItemViewModel) {
+    public func display(_ viewModel: WeatherItemViewModel) {
         itemViewModels.append(viewModel)
     }
     
-    func display(_ viewModel: WeatherFeedErrorViewModel) {
+    public func display(_ viewModel: WeatherFeedErrorViewModel) {
         errorViewModel.setState(viewModel.currentState)
     }
 }

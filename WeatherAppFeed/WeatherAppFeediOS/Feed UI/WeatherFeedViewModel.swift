@@ -18,11 +18,11 @@ class WeatherFeedViewModel: ObservableObject {
     
     func feed(with items: [WeatherItemViewModel]) -> some View {
         List(items, id: \.id) { model in
-            WeatherCard(model.viewModel)
+            WeatherCard(model.viewModel) 
         }
         .scrollIndicators(.hidden)
         .listStyle(.plain)
         .background(.clear)
-        .safeAreaPadding(.vertical, 50)
+        .safeAreaPadding(.vertical, 70)
     }
 }

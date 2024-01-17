@@ -7,7 +7,7 @@
 
 import WeatherAppFeed
  
-struct WeatherItemViewModel {
+public struct WeatherItemViewModel {
     let id: Int
     let item: WeatherItem
     
