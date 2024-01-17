@@ -15,11 +15,11 @@ final class WeatherAppFeedEndToEndTests: XCTestCase {
         let exp = expectation(description: "wait for request")
         let item = try WeatherItemMapper.map(data, from: response)
         exp.fulfill()
-        
-        debugPrint(item)
+         
         await fulfillment(of: [exp])
-        XCTAssertNotNil(item, "expects item receives")
-        
+         
+        XCTAssertEqual(item.id, 2643743, "item id")
+        XCTAssertEqual(item.name, "London", "item name")
     }
     
     // MARK: - Helpers
