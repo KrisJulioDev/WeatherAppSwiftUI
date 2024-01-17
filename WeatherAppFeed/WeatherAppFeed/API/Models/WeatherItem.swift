@@ -8,23 +8,22 @@
 import Foundation 
 
 public struct WeatherItem: Equatable {
-    let id: Int
-    let name: String
-    
-    // Main data
-    let temp: Double
-    let feelsLike: Double
-    let tempMin: Double
-    let tempMax: Double
-    let pressure: Int
-    let humidity: Int
-    
-    let visibility: Int
-    let windSpeed: Double
-    
-    let dt: Int
-    let clouds: Int
-    let timezone: Int
+    public let id: Int
+    public let name: String
+     
+    public  let temp: Double
+    public  let feelsLike: Double
+    public  let tempMin: Double
+    public  let tempMax: Double
+    public  let pressure: Int
+    public  let humidity: Int
+
+    public  let visibility: Int
+    public  let windSpeed: Double
+
+    public  let dt: Int
+    public  let clouds: Int
+    public  let timezone: Int
     
     public init(id: Int, name: String, temp: Double, feelsLike: Double, tempMin: Double, tempMax: Double, pressure: Int, humidity: Int, visibility: Int, windSpeed: Double, dt: Int, clouds: Int, timezone: Int) {
         self.id = id

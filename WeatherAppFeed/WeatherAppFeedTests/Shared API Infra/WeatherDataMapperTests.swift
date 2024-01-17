@@ -36,7 +36,19 @@ final class WeatherDataMapperTests: XCTestCase {
         
         let result = try WeatherItemMapper.map(data, from: response)
         
-        XCTAssertEqual(result, item.model)
+        XCTAssertEqual(result.id, item.model.id)
+        XCTAssertEqual(result.name, item.model.name)
+        XCTAssertEqual(result.temp, item.model.temp)
+        XCTAssertEqual(result.feelsLike, item.model.feelsLike)
+        XCTAssertEqual(result.tempMin, item.model.tempMin)
+        XCTAssertEqual(result.tempMax, item.model.tempMax)
+        XCTAssertEqual(result.pressure, item.model.pressure)
+        XCTAssertEqual(result.humidity, item.model.humidity)
+        XCTAssertEqual(result.visibility, item.model.visibility)
+        XCTAssertEqual(result.windSpeed, item.model.windSpeed)
+        XCTAssertEqual(result.dt, item.model.dt)
+        XCTAssertEqual(result.clouds, item.model.clouds)
+        XCTAssertEqual(result.timezone, item.model.timezone)
     }
     
     // MARK: Helper
