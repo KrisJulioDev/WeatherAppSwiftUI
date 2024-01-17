@@ -10,6 +10,7 @@ import Foundation
 public struct WeatherItem: Equatable {
     public let id: Int
     public let name: String
+    public let country: String
      
     public  let temp: Double
     public  let feelsLike: Double
@@ -21,13 +22,16 @@ public struct WeatherItem: Equatable {
     public  let visibility: Int
     public  let windSpeed: Double
 
+    public let rain: Double?
+    
     public  let dt: Int
     public  let clouds: Int
     public  let timezone: Int
     
-    public init(id: Int, name: String, temp: Double, feelsLike: Double, tempMin: Double, tempMax: Double, pressure: Int, humidity: Int, visibility: Int, windSpeed: Double, dt: Int, clouds: Int, timezone: Int) {
+    public init(id: Int, name: String, country: String, temp: Double, feelsLike: Double, tempMin: Double, tempMax: Double, pressure: Int, humidity: Int, visibility: Int, windSpeed: Double, rain: Double, dt: Int, clouds: Int, timezone: Int) {
         self.id = id
         self.name = name
+        self.country = country
         self.temp = temp
         self.feelsLike = feelsLike
         self.tempMin = tempMin
@@ -36,6 +40,7 @@ public struct WeatherItem: Equatable {
         self.humidity = humidity
         self.visibility = visibility
         self.windSpeed = windSpeed
+        self.rain = rain
         self.dt = dt
         self.clouds = clouds
         self.timezone = timezone
