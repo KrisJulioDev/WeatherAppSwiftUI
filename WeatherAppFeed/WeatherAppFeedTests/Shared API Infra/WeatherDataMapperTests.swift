@@ -46,7 +46,7 @@ final class WeatherDataMapperTests: XCTestCase {
     }
     
     private func makeValidItem() -> (model: WeatherItem, json: [String: Any]) {
-        let item = WeatherItem(lat: 90, lon: 90, timezone: "America/Chicago", timezoneOffset: -18000, current: Current(dt: 1684926645, sunrise: 1684926645, sunset: 1684926645, temp: 292.55, feelsLike: 292.55, pressure: 1014, humidity: 15, dewPoint: 22, uvi: 11, clouds: 1014, visibility: 12, windSpeed: 123, windDeg: 1231, windGust: 2131, weather: [WeatherInfo(id: 90, main: "main", description: "descr", icon: "icon")]))
+        let item = WeatherItem(id: 2643743, name: "London", temp: 271.79, feelsLike: 271.79, tempMin: 270.21, tempMax: 273.13, pressure: 1000, humidity: 84, visibility: 10000, windSpeed: 0.89, dt: 1705450380, clouds: 83, timezone: 0)
         
         let json = weatherJSON()
         
@@ -55,34 +55,48 @@ final class WeatherDataMapperTests: XCTestCase {
     
     private func weatherJSON() -> [String: Any] {
         return [
-            "lat": 90,
-            "lon": 90,
-            "timezone": "America/Chicago",
-            "timezoneOffset": -18000,
-            "current": [
-                "dt": 1684926645,
-                "sunrise": 1684926645,
-                "sunset": 1684926645,
-                "temp": 292.55,
-                "feelsLike": 292.55,
-                "pressure": 1014,
-                "humidity": 15,
-                "dewPoint": 22,
-                "uvi": 11,
-                "clouds": 1014,
-                "visibility": 12,
-                "windSpeed": 123,
-                "windDeg": 1231,
-                "windGust": 2131,
+            "coord": [
+                    "lon": -0.1257,
+                    "lat": 51.5085
+                ],
                 "weather": [
                     [
-                        "id": 90,
-                        "main": "main",
-                        "description": "descr",
-                        "icon": "icon"
+                        "id": 803,
+                        "main": "Clouds",
+                        "description": "broken clouds",
+                        "icon": "04n"
                     ]
-                ]
-            ]
+                ],
+                "base": "stations",
+                "main": [
+                    "temp": 271.79,
+                    "feels_like": 271.79,
+                    "temp_min": 270.21,
+                    "temp_max": 273.13,
+                    "pressure": 1000,
+                    "humidity": 84
+                ],
+                "visibility": 10000,
+                "wind": [
+                    "speed": 0.89,
+                    "deg": 244,
+                    "gust": 1.34
+                ],
+                "clouds": [
+                    "all": 83
+                ],
+                "dt": 1705450380,
+                "sys": [
+                    "type": 2,
+                    "id": 2091269,
+                    "country": "GB",
+                    "sunrise": 1705478291,
+                    "sunset": 1705508528
+                ],
+                "timezone": 0,
+                "id": 2643743,
+                "name": "London",
+                "cod": 200
         ]
     }
 }

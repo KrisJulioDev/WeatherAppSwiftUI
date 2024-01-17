@@ -6,28 +6,20 @@
 //
  
 public enum FeedEndpoint {
-    case getWeather(WeatherQuery)
+    case getWeather(String)
     
     public func url(baseURL: URL, apiKey: String) -> URL {
         switch self {
-        case let .getWeather(query):
+        case let .getWeather(location):
             var components = URLComponents()
             components.scheme = baseURL.scheme
             components.host = baseURL.host
-            components.path = baseURL.path + "/data/3.0/onecall"
+            components.path = baseURL.path + "/data/2.5/weather"
             components.queryItems = [
-                URLQueryItem(name: "lat", value: query.latitude),
-                URLQueryItem(name: "lon", value: query.longitude),
-                URLQueryItem(name: "appid", value: apiKey),
-                URLQueryItem(name: "units", value: query.unitParameter)
-            ].compactMap { $0 }
-            
-            if let intervals = query.intervals {
-                components.queryItems?.append(
-                    URLQueryItem(name: "exclude", value: intervals)
-                )
-            }
-            
+                URLQueryItem(name: "q", value: location),
+                URLQueryItem(name: "appid", value: apiKey)
+            ]
+             
             return components.url!
         }
     }
