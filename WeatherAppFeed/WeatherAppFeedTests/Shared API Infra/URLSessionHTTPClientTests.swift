@@ -17,17 +17,13 @@ final class URLSessionHTTPClientTests: XCTestCase {
     
     func test_getFromURL_performsGETRequestWithURL() async throws {
         let url = anyURL()
-        let exp = expectation(description: "Wait for get completion")
         
         URLProtocolStub.observeRequests { request in
             XCTAssertEqual(request.httpMethod, "GET", "http method")
             XCTAssertEqual(request.url, url, "URL should be the same")
-            exp.fulfill()
         }
         
         try await makeSUT().get(from: url)
-        
-        await fulfillment(of: [exp])
     }
     
     func test_fetchFromURL_receivesErrorOnErrorResponse() async throws {

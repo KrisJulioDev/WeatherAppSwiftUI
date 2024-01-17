@@ -11,25 +11,28 @@ import WeatherAppFeed
 final class WeatherAppFeedEndToEndTests: XCTestCase {
         
     func test_endToEndTestServerGETWeatherResult_matchesFixedData() async throws {
-        let (data, response) = try await getWeatherResult()
-        let exp = expectation(description: "wait for request")
-        let item = try WeatherItemMapper.map(data, from: response)
-        exp.fulfill()
-         
-        await fulfillment(of: [exp])
-         
-        XCTAssertEqual(item.id, 2643743, "item id")
-        XCTAssertEqual(item.name, "London", "item name")
+        let data: [(Int, String)] = [
+            (2643743, "London"),
+            (1701668, "Manila"),
+            (5855797, "Hawaii")
+        ]
+        
+        for (id, name) in data {
+            let (data, response) = try await getWeatherResult(location: name)
+            let item = try WeatherItemMapper.map(data, from: response)
+             
+            XCTAssertEqual(item.id, id, "item id")
+            XCTAssertEqual(item.name, name, "item name")
+        }
     }
     
     // MARK: - Helpers
     
-    private func getWeatherResult(file: StaticString = #file, line: UInt = #line) async throws -> HTTPClient.Result {
+    private func getWeatherResult(location: String, file: StaticString = #file, line: UInt = #line) async throws -> HTTPClient.Result {
         let client = ephemeralClient()
         let baseURL = URL(string: "https://api.openweathermap.org")!
         let apiKey = try ConfigManager.getAPIKEY()
- 
-        let location = "london"
+  
         return try await client.get(from: FeedEndpoint.getWeather(location).url(baseURL: baseURL, apiKey: apiKey))
     }
     
