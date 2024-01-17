@@ -26,6 +26,8 @@
 		35E6AD3D2B57440300331075 /* WeatherAppFeedEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD3C2B57440300331075 /* WeatherAppFeedEndToEndTests.swift */; };
 		35E6AD3E2B57440300331075 /* WeatherAppFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E6ACF72B5696BF00331075 /* WeatherAppFeed.framework */; };
 		35E6AD442B5744FD00331075 /* XCTestCase+MemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD132B56977300331075 /* XCTestCase+MemoryLeak.swift */; };
+		35E6AD482B57583200331075 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD472B57583200331075 /* ConfigManager.swift */; };
+		35E6AD492B575B4D00331075 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35E6AD452B5757EE00331075 /* config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		35E6AD342B56BE7500331075 /* WeatherInfraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfraData.swift; sourceTree = "<group>"; };
 		35E6AD3A2B57440300331075 /* WeatherAppFeedEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppFeedEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E6AD3C2B57440300331075 /* WeatherAppFeedEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppFeedEndToEndTests.swift; sourceTree = "<group>"; };
+		35E6AD452B5757EE00331075 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		35E6AD472B57583200331075 /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				35E6AD2D2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift */,
+				35E6AD472B57583200331075 /* ConfigManager.swift */,
+				35E6AD452B5757EE00331075 /* config.plist */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35E6AD492B575B4D00331075 /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +358,7 @@
 				35E6AD212B56AE3B00331075 /* FeedEndpoint.swift in Sources */,
 				35E6AD332B56BE5F00331075 /* WeatherItem.swift in Sources */,
 				35E6AD1F2B569C9600331075 /* URLSessionHTTPClient.swift in Sources */,
+				35E6AD482B57583200331075 /* ConfigManager.swift in Sources */,
 				35E6AD352B56BE7500331075 /* WeatherInfraData.swift in Sources */,
 				35E6AD2B2B56B99900331075 /* WeatherItemMapper.swift in Sources */,
 				35E6AD2E2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift in Sources */,

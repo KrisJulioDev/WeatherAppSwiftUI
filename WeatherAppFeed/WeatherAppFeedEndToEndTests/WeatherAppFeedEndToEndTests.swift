@@ -27,7 +27,7 @@ final class WeatherAppFeedEndToEndTests: XCTestCase {
     private func getWeatherResult(file: StaticString = #file, line: UInt = #line) async throws -> HTTPClient.Result {
         let client = ephemeralClient()
         let baseURL = URL(string: "https://api.openweathermap.org")!
-        let apiKey = "{API_KEY}"
+        let apiKey = try ConfigManager.getAPIKEY()
  
         let location = "london"
         return try await client.get(from: FeedEndpoint.getWeather(location).url(baseURL: baseURL, apiKey: apiKey))
