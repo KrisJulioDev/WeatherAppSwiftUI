@@ -78,9 +78,7 @@ extension WeatherItemMapper {
     }
 
     private struct Wind: Codable {
-        let speed: Double
-        let deg: Int
-        let gust: Double
+        let speed: Double 
     }
 
     private struct Clouds: Codable {

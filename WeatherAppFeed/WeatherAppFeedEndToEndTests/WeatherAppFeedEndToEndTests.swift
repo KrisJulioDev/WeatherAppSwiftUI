@@ -27,7 +27,7 @@ final class WeatherAppFeedEndToEndTests: XCTestCase {
     private func getWeatherResult(file: StaticString = #file, line: UInt = #line) async throws -> HTTPClient.Result {
         let client = ephemeralClient()
         let baseURL = URL(string: "https://api.openweathermap.org")!
-        let apiKey = "64945d4633b80577680f650bab9f32c0"
+        let apiKey = "{API_KEY}"
  
         let location = "london"
         return try await client.get(from: FeedEndpoint.getWeather(location).url(baseURL: baseURL, apiKey: apiKey))
@@ -38,4 +38,4 @@ final class WeatherAppFeedEndToEndTests: XCTestCase {
         trackForMemoryLeaks(client, file: file, line: line)
         return client
     }
-} 
+}
