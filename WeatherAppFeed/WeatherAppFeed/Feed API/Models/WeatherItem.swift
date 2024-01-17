@@ -22,7 +22,7 @@ public struct WeatherItem: Equatable {
     public  let visibility: Int
     public  let windSpeed: Double
 
-    public let rain: Double?
+    public let rain: Double
     
     public  let dt: Int
     public  let clouds: Int

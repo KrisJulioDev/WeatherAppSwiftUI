@@ -25,6 +25,20 @@ struct WeatherCardViewModel {
         item.name + ", " + item.country
     }
     
+    var currentTimeTitle: String {
+        NSLocalizedString("CURRENT_TIME",
+            tableName: "Feed",
+            bundle: Bundle(for: WeatherFeedViewPresenter.self),
+            comment: "current time title")
+    }
+    
+    var todaysForecastTitle: String {
+        NSLocalizedString("TODAYS_FORECAST",
+            tableName: "Feed",
+            bundle: Bundle(for: WeatherFeedViewPresenter.self),
+            comment: "todaysForecast title")
+    }
+    
     var currentTime: String {
         let timestamp = TimeInterval(1705464189)
         let date = Date(timeIntervalSince1970: timestamp)
@@ -45,6 +59,10 @@ struct WeatherCardViewModel {
                         value: String(item.humidity),
                         image: Image(systemName: "humidity.fill")),
             
+            WeatherInfo(title: "Rain",
+                        value: String(item.rain),
+                        image: Image(systemName: "cloud.rain.fill")),
+            
             WeatherInfo(title: "Wind",
                         value: String(item.windSpeed),
                         image: Image(systemName: "wind")),
@@ -64,13 +82,14 @@ struct WeatherCard: View {
         VStack {
             VStack {
                 Text(viewModel.name)
-                    .font(.largeTitle)
+                    .font(.title)
                     .foregroundStyle(.primary)
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text("CURRENT TIME")      
-                    .foregroundStyle(.gray.opacity(0.8))
+                Text(viewModel.currentTimeTitle)
+                    .foregroundStyle(.secondary)
+                    .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 0.1)
@@ -82,11 +101,12 @@ struct WeatherCard: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                  
-                Text("TODAY'S FORECAST")
-                    .foregroundStyle(.gray.opacity(0.8))
+                Text(viewModel.todaysForecastTitle)
+                    .foregroundStyle(.secondary)
+                    .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 2)
+                    .padding(.top, 1)
                 
                 Divider().frame(height: 2)
                 
@@ -112,8 +132,8 @@ struct WeatherCard: View {
             RoundedRectangle(cornerRadius: 15)
                 .stroke(.black.opacity(0.2), lineWidth: 2)
         )
-        .safeAreaPadding()
         .shadow(radius: 5)
+        .listRowBackground(Color.clear)
     }
 }
 
@@ -126,28 +146,29 @@ struct LabelView: View {
 
     var body: some View {
         VStack {
-            VStack {
+            VStack(alignment: .center) {
                 weatherInfo.image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 50, height: 50)
+                    .frame(width: 30, height: 30)
                 
                 Text(weatherInfo.title)
-                    .font(.headline)
+                    .font(.caption)
                     .foregroundColor(.primary)
                     .fontDesign(.monospaced)
                     .padding(.top, 0.5)
                 
                 Text(weatherInfo.value)
-                    .font(.subheadline)
+                    .font(.caption2)
                     .foregroundColor(.primary)
                     .fontDesign(.monospaced)
                 
             }
-            .padding()
+            .padding(.vertical)
         }
+        .frame(width: 75)
         .background(
-            .thinMaterial
+            .ultraThickMaterial
         )
         .clipShape(RoundedRectangle(cornerRadius: 15))
     }

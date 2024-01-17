@@ -1,0 +1,39 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CURRENT_TIME" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CURRENT TIME"
+          }
+        }
+      }
+    },
+    "FEED_VIEW_TITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weather Watcher"
+          }
+        }
+      }
+    },
+    "TODAYS_FORECAST" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TODAY'S FORECAST"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

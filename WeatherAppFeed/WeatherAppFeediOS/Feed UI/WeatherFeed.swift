@@ -9,23 +9,41 @@ import SwiftUI
 import WeatherAppFeed
 
 struct WeatherFeed: View {
-    @EnvironmentObject var observer: WeatherFeedViewPresenter
+    private typealias WeatherError = WeatherFeedErrorViewModel
+    
+    @EnvironmentObject var presenter: WeatherFeedViewPresenter
     @EnvironmentObject var viewModel: WeatherFeedViewModel
+    @EnvironmentObject var errorViewModel: WeatherFeedErrorViewModel
+    
+    private let title: String
+    
+    public init(title: String) {
+        self.title = title
+    }
     
     var body: some View {
         ZStack {
             viewModel.backgroundImage
-            
-            ForEach(observer.weatherViewModels, id: \.id) { model in
-                WeatherCard(model.viewModel)
-            }
+            viewModel.feed(with: presenter.itemViewModels)
+            WeatherErrorView(viewModel: errorViewModel,
+                             tapHandler: didTapError)
         }
         .onAppear {
-            observer.addWeather()
+            presenter.addWeather()
+            presenter.addWeather()
+            presenter.addWeather()
         }
+        .navigationTitle(title)
+        .navigationBarTitleDisplayMode(.inline)
+    } 
+    
+    private func didTapError() {
+        presenter.display(WeatherError(currentState: .noError))
     }
 }
 
 #Preview {
-    return WeatherFeedViewPresenter().compose()
+    NavigationStack {
+        WeatherFeedViewPresenter().compose()
+    }
 }
