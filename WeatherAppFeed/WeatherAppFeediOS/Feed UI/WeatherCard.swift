@@ -10,7 +10,7 @@ import WeatherAppFeed
 
 struct WeatherInfo {
     let title: String
-    let value: String
+    let value: String?
     let image: Image
 }
 
@@ -60,13 +60,14 @@ struct WeatherCardViewModel {
                         image: Image(systemName: "humidity.fill")),
             
             WeatherInfo(title: "Rain",
-                        value: String(item.rain),
+                        value: item.rain == nil ? nil : String(item.rain!),
                         image: Image(systemName: "cloud.rain.fill")),
             
             WeatherInfo(title: "Wind",
                         value: String(item.windSpeed),
                         image: Image(systemName: "wind")),
         ]
+        .filter { $0.value != nil }
     }
      
 }
@@ -127,6 +128,7 @@ struct WeatherCard: View {
                 .thinMaterial
             )
             .clipShape(RoundedRectangle(cornerRadius: 15))
+            .listRowSeparator(.hidden)
         }
         .overlay(
             RoundedRectangle(cornerRadius: 15)
@@ -158,7 +160,7 @@ struct LabelView: View {
                     .fontDesign(.monospaced)
                     .padding(.top, 0.5)
                 
-                Text(weatherInfo.value)
+                Text(weatherInfo.value ?? "")
                     .font(.caption2)
                     .foregroundColor(.primary)
                     .fontDesign(.monospaced)

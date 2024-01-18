@@ -9,12 +9,13 @@ import SwiftUI
 import WeatherAppFeed
 
 struct WeatherFeed: View {
+    public typealias SearchCallBack = ((String) -> Void)
     private typealias WeatherError = WeatherFeedErrorViewModel
     
     @EnvironmentObject var presenter: WeatherFeedViewPresenter
     @EnvironmentObject var viewModel: WeatherFeedViewModel
     @EnvironmentObject var errorViewModel: WeatherFeedErrorViewModel
-    
+    @State private var showSearchPopup: Bool = false
     private let title: String
     
     public init(title: String) {
@@ -23,21 +24,44 @@ struct WeatherFeed: View {
     
     var body: some View {
         ZStack {
-            viewModel.backgroundImage
-            viewModel.feed(with: presenter.itemViewModels)
-            WeatherErrorView(viewModel: errorViewModel,
-                             tapHandler: didTapError)
-            SearchBarView()
+            BackgroundImageView()
+            
+            VStack {
+                withAnimation {
+                    WeatherErrorView(viewModel: errorViewModel,
+                                     tapHandler: didTapError)
+                }
+                viewModel.feed(with: presenter.itemViewModels)
+            }
+            
+            SearchBarView(searchCallback: showPopupToggle)
         }
-        .onAppear {
-            presenter.addWeather()
-            presenter.addWeather()
-            presenter.addWeather()
-        } 
+        .overlay {
+            if presenter.itemViewModels.isEmpty {
+                EmptyWeatherView(callback: showPopupToggle)
+            }
+            
+            SearchPopupView(isPresented: $showSearchPopup,
+                            viewModel: SearchPopupViewModel(searchCallBack: search))
+        }
+    }
+      
+    private func search(input: String) {
+        Task {
+            try await presenter.fetchWeather?(input)
+        }
     }
     
-    private func didTapError() {
-        presenter.display(WeatherError(currentState: .noError))
+    private func showPopupToggle() {
+        withAnimation {
+            showSearchPopup.toggle()
+        }
+    }
+    
+    private func didTapError() async {
+        await MainActor.run {
+            presenter.display(WeatherError(.noError))
+        }
     }
 }
 

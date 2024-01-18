@@ -11,32 +11,47 @@ import SwiftUI
 
 struct WeatherErrorView: View { 
     private let viewModel: WeatherFeedErrorViewModel
-    private let tapHandler: () -> Void
+    private let tapHandler: () async -> Void
     
-    public init(viewModel: WeatherFeedErrorViewModel, tapHandler: @escaping () -> Void) {
+    public init(viewModel: WeatherFeedErrorViewModel, tapHandler: @escaping () async -> Void) {
         self.viewModel = viewModel
         self.tapHandler = tapHandler
     }
     
     var body: some View {
         ZStack {
-            switch viewModel.currentState {
-            case let .noConnection(message):
-                Button(action: {
-                    tapHandler()
-                }, label: {
-                    Text(message)
-                        .foregroundStyle(.white)
-                        .font(.title3)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(
-                            viewModel.errorViewBGColor
-                        )
-                })
+            switch viewModel.error {
+            case let .noConnection(message), let .noResultFound(message):
+                barErrorView(with: message)
             case .noError:
                 EmptyView()
             }
         }
+        .transition(.move(edge: .top))
+        .padding(.top, 50)
     }
-}
+    
+    private func barErrorView(with message: String) -> some View {
+        
+        VStack {
+            Spacer().frame(height: 10)
+            Button(action: {
+                Task {
+                    await tapHandler()
+                }
+            }, label: {
+                VStack {
+                    Text(message)
+                        .foregroundStyle(.white)
+                        .font(.title3.monospaced())
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 40)
+                        .multilineTextAlignment(.center)
+                        .background(
+                            viewModel.errorViewBGColor
+                        )
+                }
+            })
+        }
+    }
+} 

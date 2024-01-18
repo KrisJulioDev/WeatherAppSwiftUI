@@ -8,21 +8,25 @@
 import SwiftUI
 
 class WeatherFeedViewModel: ObservableObject {
-    var backgroundImage: some View {
+      
+    func feed(with items: [WeatherItemViewModel]) -> some View {
+        List(items, id: \.id) { model in
+            WeatherCard(model.viewModel)
+                .listRowSeparator(.hidden)
+        }
+        .scrollIndicators(.hidden)
+        .listStyle(.plain)
+        .background(.clear)
+        .safeAreaPadding(.vertical, 30)
+    }
+}
+
+struct BackgroundImageView: View {
+    var body: some View {
         Image("bg", bundle: Bundle.feed)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             .ignoresSafeArea()
-    }
-    
-    func feed(with items: [WeatherItemViewModel]) -> some View {
-        List(items, id: \.id) { model in
-            WeatherCard(model.viewModel) 
-        }
-        .scrollIndicators(.hidden)
-        .listStyle(.plain)
-        .background(.clear)
-        .safeAreaPadding(.vertical, 70)
     }
 }

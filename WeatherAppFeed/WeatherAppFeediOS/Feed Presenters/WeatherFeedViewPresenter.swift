@@ -9,27 +9,18 @@ import WeatherAppFeed
 import SwiftUI
 
 public class WeatherFeedErrorViewModel: ObservableObject {
-    @Published private(set) var currentState: State = .noError
-    
-    public enum State {
-        case noError
-        case noConnection(String)
-    }
+    @Published var error: RemoteFeedLoader.ViewError = .noError
      
     var errorViewBGColor: Color {
         Color("errorColor", bundle: Bundle.feed)
     }
     
-    public init(currentState: State = .noError) {
-        self.currentState = currentState
-    }
-    
-    public func setState(_ state: State) {
-        currentState = state
+    public init(_ error: RemoteFeedLoader.ViewError = .noError) {
+        self.error = error
     }
 }
 
-public class WeatherFeedViewPresenter: ObservableObject, 
+public class WeatherFeedViewPresenter: ObservableObject,
                                         ResourceView, ResourceErrorView {
     public typealias ResourceViewModel = WeatherItemViewModel
     public typealias ResourceFeedErrorViewModel = WeatherFeedErrorViewModel
@@ -45,6 +36,8 @@ public class WeatherFeedViewPresenter: ObservableObject,
             comment: "Title for the feed view")
     }
     
+    public var fetchWeather: ((String) async throws -> Void)?
+    
     public init() {}
     
     public func compose() -> some View {
@@ -59,7 +52,7 @@ public class WeatherFeedViewPresenter: ObservableObject,
     }
     
     public func display(_ viewModel: WeatherFeedErrorViewModel) {
-        errorViewModel.setState(viewModel.currentState)
+        errorViewModel.error = viewModel.error
     }
 }
 

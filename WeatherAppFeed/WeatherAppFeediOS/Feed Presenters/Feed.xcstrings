@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "CANCEL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
     "CURRENT_TIME" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -12,6 +23,39 @@
         }
       }
     },
+    "DISCOVER_WEATHER" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover the weather forecast for your favorite city."
+          }
+        }
+      }
+    },
+    "EMPTY_WEATHER" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty Weather List"
+          }
+        }
+      }
+    },
+    "ENTER_COUNTRY" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex: Manila"
+          }
+        }
+      }
+    },
     "FEED_VIEW_TITLE" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -19,6 +63,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weather Watcher"
+          }
+        }
+      }
+    },
+    "NO_RESULT" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No result found. Try again"
+          }
+        }
+      }
+    },
+    "SEARCH" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "SEARCH_CITY" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search by City"
+          }
+        }
+      }
+    },
+    "SEARCH_WEATHER" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search weather by city"
           }
         }
       }

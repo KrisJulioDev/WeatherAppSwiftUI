@@ -13,8 +13,8 @@ final public class ConfigManager {
         case invalidPath
     }
     
-    public static func getAPIKEY() throws -> String {
-        if let path = plist, 
+    public static func getAPIKEY() -> String {
+        if let path = plist,
             let data = file(at: path),
             let dictionary = try? dictionary(for: data) {
             
@@ -23,12 +23,10 @@ final public class ConfigManager {
                     return apiKey
                 } else {
                     assertionFailure("Add your API_KEY to config.plist)")
-                    throw ConfigError.keyNotFound
                 }
             }
         }
-        assertionFailure("Add your API_KEY to config.plist)")
-        throw ConfigError.invalidPath
+        fatalError("please add api key in file config.plist")
     }
     
     private static var plist: String? {
