@@ -13,7 +13,7 @@ extension CoreDataFeedStore: FeedStore {
         try performSync { context in
             Result {
                 try ManagedCache.find(in: context).map {
-                    CachedFeed($0.localFeed)
+                    CachedFeed($0.localFeed.sorted(by: { $0.name < $1.name }))
                 }
             }
         }
@@ -24,6 +24,8 @@ extension CoreDataFeedStore: FeedStore {
             Result {
                 let managedCache = try ManagedCache.newUniqueInstance(in: context)
                 managedCache.feed = ManagedItem.items(from: feed, in: context)
+                
+                context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
                 try context.save()
             }
         }

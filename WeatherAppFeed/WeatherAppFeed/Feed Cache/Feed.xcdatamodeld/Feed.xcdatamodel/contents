@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ManagedCache" representedClassName="ManagedCache" syncable="YES">
-        <relationship name="feed" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ManagedItem" inverseName="cache" inverseEntity="ManagedItem"/>
+        <relationship name="feed" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedItem" inverseName="cache" inverseEntity="ManagedItem"/>
     </entity>
     <entity name="ManagedItem" representedClassName="ManagedItem" syncable="YES">
         <attribute name="clouds" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -19,5 +19,10 @@
         <attribute name="weatherIcon" optional="YES" attributeType="String"/>
         <attribute name="windSpeed" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <relationship name="cache" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCache" inverseName="feed" inverseEntity="ManagedCache"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
 </model>

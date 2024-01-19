@@ -44,6 +44,6 @@ public struct WeatherItem: Hashable {
     }
     
     static public func ==(lhs: WeatherItem, rhs: WeatherItem) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.id == rhs.id && lhs.name == rhs.name
     }
 }

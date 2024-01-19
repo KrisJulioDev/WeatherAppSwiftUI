@@ -22,7 +22,7 @@ struct WeatherApp: App {
             }
             .onAppear {
                 Task {
-                    await loadResourcePresenter.loadInitialResource()
+                    await loadResourcePresenter.loadResource()
                 }
             }
         }

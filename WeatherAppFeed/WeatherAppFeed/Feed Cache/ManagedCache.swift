@@ -30,6 +30,7 @@ extension ManagedCache {
     }
     
     var localFeed: [WeatherItem] {
-        return feed.compactMap { ($0 as? ManagedItem)?.local }
+        return feed
+            .compactMap { ($0 as? ManagedItem)?.local }
     }
 }

@@ -28,7 +28,7 @@ public class LoadResourcePresenterAdapter {
         self.presenter.deleteWeather = deleteItem
     }
     
-    public func loadInitialResource() async {
+    private func loadResource() async {
         if let localData = try? localLoader.load() {
             currentData = localData
             await setDisplayWith(currentData)
@@ -47,10 +47,9 @@ public class LoadResourcePresenterAdapter {
     }
     
     private func deleteItem(_ item: WeatherItem) async {
-        let newData = currentData.filter { $0 != item }
-        try? localLoader.save(newData)
-        currentData = newData
-        await setDisplayWith(currentData)
+        currentData.removeAll(where: { $0 == item })
+        try? localLoader.save(currentData)
+        await loadResource()
     }
     
     public func composeFeed() -> some View {
@@ -60,15 +59,11 @@ public class LoadResourcePresenterAdapter {
 
 extension LoadResourcePresenterAdapter {
     private func didFinishWithResult(_ result: WeatherItem) async {
-        refreshIfItemExist(for: result)
-        
         currentData.append(result)
+        
         try? localLoader.save(currentData)
-        await setDisplayWith(currentData)
-    }
-    
-    private func refreshIfItemExist(for item: WeatherItem) {
-        currentData = currentData.filter { $0 != item }
+        
+        await loadResource()
     }
     
     private func setDisplayWith(_ items: [WeatherItem]) async {
