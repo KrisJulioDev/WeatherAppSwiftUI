@@ -42,7 +42,6 @@
 		35E6AD2E2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD2D2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift */; };
 		35E6AD312B56BB6900331075 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD302B56BB6900331075 /* SharedTestHelpers.swift */; };
 		35E6AD332B56BE5F00331075 /* WeatherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD322B56BE5F00331075 /* WeatherItem.swift */; };
-		35E6AD352B56BE7500331075 /* WeatherInfraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD342B56BE7500331075 /* WeatherInfraData.swift */; };
 		35E6AD3D2B57440300331075 /* WeatherAppFeedEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD3C2B57440300331075 /* WeatherAppFeedEndToEndTests.swift */; };
 		35E6AD3E2B57440300331075 /* WeatherAppFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E6ACF72B5696BF00331075 /* WeatherAppFeed.framework */; };
 		35E6AD442B5744FD00331075 /* XCTestCase+MemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD132B56977300331075 /* XCTestCase+MemoryLeak.swift */; };
@@ -50,7 +49,6 @@
 		35E6AD492B575B4D00331075 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35E6AD452B5757EE00331075 /* config.plist */; };
 		35E6AD4C2B577B4E00331075 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD4B2B577B4E00331075 /* FeedStore.swift */; };
 		35E6AD5A2B577C9200331075 /* WeatherAppFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E6AD522B577C9200331075 /* WeatherAppFeediOS.framework */; };
-		35E6AD5F2B577C9200331075 /* WeatherAppFeediOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD5E2B577C9200331075 /* WeatherAppFeediOSTests.swift */; };
 		35E6AD602B577C9200331075 /* WeatherAppFeediOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 35E6AD542B577C9200331075 /* WeatherAppFeediOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35E6AD6A2B577D2E00331075 /* WeatherFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD692B577D2E00331075 /* WeatherFeed.swift */; };
 		35E6AD6C2B577EDE00331075 /* WeatherAppFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E6ACF72B5696BF00331075 /* WeatherAppFeed.framework */; };
@@ -143,7 +141,6 @@
 		35E6AD2D2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		35E6AD302B56BB6900331075 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		35E6AD322B56BE5F00331075 /* WeatherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItem.swift; sourceTree = "<group>"; };
-		35E6AD342B56BE7500331075 /* WeatherInfraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfraData.swift; sourceTree = "<group>"; };
 		35E6AD3A2B57440300331075 /* WeatherAppFeedEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppFeedEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E6AD3C2B57440300331075 /* WeatherAppFeedEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppFeedEndToEndTests.swift; sourceTree = "<group>"; };
 		35E6AD452B5757EE00331075 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
@@ -152,7 +149,6 @@
 		35E6AD522B577C9200331075 /* WeatherAppFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeatherAppFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E6AD542B577C9200331075 /* WeatherAppFeediOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherAppFeediOS.h; sourceTree = "<group>"; };
 		35E6AD592B577C9200331075 /* WeatherAppFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		35E6AD5E2B577C9200331075 /* WeatherAppFeediOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppFeediOSTests.swift; sourceTree = "<group>"; };
 		35E6AD692B577D2E00331075 /* WeatherFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFeed.swift; sourceTree = "<group>"; };
 		35E6AD712B57887E00331075 /* WeatherItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItemViewModel.swift; sourceTree = "<group>"; };
 		35E6AD742B5788A200331075 /* WeatherFeedViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFeedViewPresenter.swift; sourceTree = "<group>"; };
@@ -337,7 +333,6 @@
 			isa = PBXGroup;
 			children = (
 				35E6AD322B56BE5F00331075 /* WeatherItem.swift */,
-				35E6AD342B56BE7500331075 /* WeatherInfraData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -389,7 +384,6 @@
 		35E6AD5D2B577C9200331075 /* WeatherAppFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				35E6AD5E2B577C9200331075 /* WeatherAppFeediOSTests.swift */,
 			);
 			path = WeatherAppFeediOSTests;
 			sourceTree = "<group>";
@@ -568,6 +562,7 @@
 					};
 					35E6AD582B577C9200331075 = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -653,7 +648,6 @@
 				35E6AD4C2B577B4E00331075 /* FeedStore.swift in Sources */,
 				3561AB5E2B59FD0000146414 /* LocalFeedLoader.swift in Sources */,
 				35E6AD482B57583200331075 /* ConfigManager.swift in Sources */,
-				35E6AD352B56BE7500331075 /* WeatherInfraData.swift in Sources */,
 				3561AB4F2B59F3B900146414 /* Feed.xcdatamodeld in Sources */,
 				35E6AD2B2B56B99900331075 /* WeatherItemMapper.swift in Sources */,
 				35E6AD2E2B56BAE400331075 /* HTTPURLResponse+StatusCode.swift in Sources */,
@@ -708,7 +702,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35E6AD5F2B577C9200331075 /* WeatherAppFeediOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +876,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
@@ -917,6 +911,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
@@ -1007,7 +1002,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1044,7 +1039,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1069,16 +1064,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 99AUV9Q5LC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.demoapp.weatherapp.WeatherAppFeediOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1088,11 +1085,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 99AUV9Q5LC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.demoapp.weatherapp.WeatherAppFeediOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

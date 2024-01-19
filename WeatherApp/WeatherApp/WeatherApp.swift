@@ -13,7 +13,7 @@ import WeatherAppFeediOS
  
 @main
 struct WeatherApp: App {
-    private let loadResourcePresenter = LoadResourcePresenterAdapter.create()
+    private let loadResourcePresenter = LoadResourcePresenterAdapter.createDependencies()
     
     var body: some Scene {
         WindowGroup {
@@ -30,7 +30,7 @@ struct WeatherApp: App {
 }
 
 extension LoadResourcePresenterAdapter {
-    static func create() -> LoadResourcePresenterAdapter {
+    static func createDependencies() -> LoadResourcePresenterAdapter {
         let store: FeedStore = {
             do {
                 return try CoreDataFeedStore(
@@ -43,20 +43,26 @@ extension LoadResourcePresenterAdapter {
             }
         }()
         
-        let baseURL = URL(string: "https://api.openweathermap.org")!
-        let APIKey = ConfigManager.getAPIKEY()
-        let httpClient: HTTPClient = {
-            URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-        }()
+        let baseUrl = URL(string: "https://api.openweathermap.org")!
+        let apiKey = ConfigManager.getAPIKEY()
+        let httpClient: HTTPClient = URLSessionHTTPClient(
+            session: URLSession(configuration: .ephemeral)
+        )
+        
         let networkMonitor = NetworkMonitor()
         
-        let remoteLoader = RemoteFeedLoader(baseURL: baseURL, APIKey: APIKey, httpClient: httpClient, networkMonitor: networkMonitor)
+        let remoteLoader = RemoteFeedLoader(baseUrl: baseUrl,
+                                            apiKey: apiKey,
+                                            httpClient: httpClient,
+                                            networkMonitor: networkMonitor)
         
         let localLoader = LocalFeedLoader(store: store)
-         
         let viewPresenter = WeatherFeedViewPresenter()
-        return LoadResourcePresenterAdapter(remoteLoader: remoteLoader,
-                                            localLoader: localLoader,
-                                            presenter: viewPresenter)
+        
+        return LoadResourcePresenterAdapter(
+            remoteLoader: remoteLoader,
+            localLoader: localLoader,
+            presenter: viewPresenter
+        )
     }
 }

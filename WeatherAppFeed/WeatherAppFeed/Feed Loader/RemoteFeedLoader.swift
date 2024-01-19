@@ -8,8 +8,8 @@
 import Network
 
 public class RemoteFeedLoader {
-    public let baseURL: URL
-    public let APIKey: String
+    public let baseUrl: URL
+    public let apiKey: String
     public let httpClient: HTTPClient
     public let networkMonitor: NetworkMonitor
     
@@ -22,9 +22,9 @@ public class RemoteFeedLoader {
         case noResultFound(String)
     }
     
-    public init(baseURL: URL, APIKey: String, httpClient: HTTPClient, networkMonitor: NetworkMonitor) {
-        self.baseURL = baseURL
-        self.APIKey = APIKey
+    public init(baseUrl: URL, apiKey: String, httpClient: HTTPClient, networkMonitor: NetworkMonitor) {
+        self.baseUrl = baseUrl
+        self.apiKey = apiKey
         self.httpClient = httpClient
         self.networkMonitor = networkMonitor
     }

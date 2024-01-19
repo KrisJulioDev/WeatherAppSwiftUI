@@ -22,7 +22,7 @@ struct WeatherFeedViewModel {
     }
 }
 
-struct WeatherFeed: View {
+public struct WeatherFeed: View {
     public typealias SearchCallBack = ((String) -> Void)
     private typealias WeatherError = WeatherFeedErrorViewModel
     private let viewModel = WeatherFeedViewModel()
@@ -31,7 +31,7 @@ struct WeatherFeed: View {
     @EnvironmentObject var errorViewModel: WeatherFeedErrorViewModel
     @State private var showSearchPopup: Bool = false
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             FeedListView(items: presenter.itemViewModels,
                          headerError: WeatherErrorView(viewModel: errorViewModel, 
