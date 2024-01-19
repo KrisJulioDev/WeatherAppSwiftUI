@@ -11,6 +11,8 @@ public struct WeatherItem: Equatable {
     public let id: Int
     public let name: String
     public let country: String
+    public let weatherDescription: String?
+    public let weatherIcon: String?
      
     public  let temp: Double
     public  let feelsLike: Double
@@ -28,10 +30,14 @@ public struct WeatherItem: Equatable {
     public  let clouds: Int
     public  let timezone: Int
     
-    public init(id: Int, name: String, country: String, temp: Double, feelsLike: Double, tempMin: Double, tempMax: Double, pressure: Int, humidity: Int, visibility: Int, windSpeed: Double, rain: Double?, dt: Int, clouds: Int, timezone: Int) {
+    public init(id: Int, name: String, country: String, 
+                weatherDescription: String?, weatherIcon: String?,
+                temp: Double, feelsLike: Double, tempMin: Double, tempMax: Double, pressure: Int, humidity: Int, visibility: Int, windSpeed: Double, rain: Double?, dt: Int, clouds: Int, timezone: Int) {
         self.id = id
         self.name = name
         self.country = country
+        self.weatherDescription = weatherDescription
+        self.weatherIcon = weatherIcon
         self.temp = temp
         self.feelsLike = feelsLike
         self.tempMin = tempMin

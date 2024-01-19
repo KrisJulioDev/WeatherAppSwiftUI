@@ -17,7 +17,7 @@ class WeatherFeedViewModel: ObservableObject {
         .scrollIndicators(.hidden)
         .listStyle(.plain)
         .background(.clear)
-        .safeAreaPadding(.vertical, 30)
+        .safeAreaPadding(.vertical, 70)
     }
 }
 

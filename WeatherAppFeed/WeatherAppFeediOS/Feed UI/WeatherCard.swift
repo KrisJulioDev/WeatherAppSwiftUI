@@ -8,70 +8,6 @@
 import SwiftUI
 import WeatherAppFeed
 
-struct WeatherInfo {
-    let title: String
-    let value: String?
-    let image: Image
-}
-
-struct WeatherCardViewModel {
-    private let item: WeatherItem
-    
-    public init(item: WeatherItem) {
-        self.item = item
-    }
-    
-    var name: String {
-        item.name + ", " + item.country
-    }
-    
-    var currentTimeTitle: String {
-        NSLocalizedString("CURRENT_TIME",
-            tableName: "Feed",
-            bundle: Bundle(for: WeatherFeedViewPresenter.self),
-            comment: "current time title")
-    }
-    
-    var todaysForecastTitle: String {
-        NSLocalizedString("TODAYS_FORECAST",
-            tableName: "Feed",
-            bundle: Bundle(for: WeatherFeedViewPresenter.self),
-            comment: "todaysForecast title")
-    }
-    
-    var currentTime: String {
-        let timestamp = TimeInterval(1705464189)
-        let date = Date(timeIntervalSince1970: timestamp)
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:ss aa"
-
-        return dateFormatter.string(from: date)
-    }
-    
-    var weatherInfo: [WeatherInfo] {
-        [
-            WeatherInfo(title: "Feels",
-                        value: String(item.feelsLike),
-                        image: Image(systemName: "thermometer.medium")),
-            
-            WeatherInfo(title: "Humid",
-                        value: String(item.humidity),
-                        image: Image(systemName: "humidity.fill")),
-            
-            WeatherInfo(title: "Rain",
-                        value: item.rain == nil ? nil : String(item.rain!),
-                        image: Image(systemName: "cloud.rain.fill")),
-            
-            WeatherInfo(title: "Wind",
-                        value: String(item.windSpeed),
-                        image: Image(systemName: "wind")),
-        ]
-        .filter { $0.value != nil }
-    }
-     
-}
-
 struct WeatherCard: View {
     private let viewModel: WeatherCardViewModel
     
@@ -82,25 +18,48 @@ struct WeatherCard: View {
     var body: some View {
         VStack {
             VStack {
-                Text(viewModel.name)
-                    .font(.title)
-                    .foregroundStyle(.primary)
-                    .fontWeight(.bold)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Text(viewModel.currentTimeTitle)
-                    .foregroundStyle(.secondary)
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 0.1)
-                
-                Text(viewModel.currentTime)
-                    .font(.title)
-                    .foregroundStyle(.primary)
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
+                HStack {
+                    VStack {
+                        Text(viewModel.name)
+                            .font(.title)
+                            .foregroundStyle(.primary)
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Text(viewModel.currentTimeTitle)
+                            .foregroundStyle(.secondary)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.top, 0.1)
+                        
+                        Text(viewModel.currentTime)
+                            .font(.title)
+                            .foregroundStyle(.primary)
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                    }
+                    
+                    VStack {
+                        AsyncImage(url: viewModel.weatherIcon) { image in
+                            image
+                                .resizable()
+                                .frame(width: 50, height: 50, alignment: .center)
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 50, height: 50)
+                        
+                        Text(viewModel.weatherDescription ?? "No image")
+                            .font(.title2)
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.primary)
+                            .fontWeight(.semibold)
+                    }
+                    .padding(.trailing, 30)
+                    .padding(.top, 20)
+                }
                  
                 Text(viewModel.todaysForecastTitle)
                     .foregroundStyle(.secondary)
@@ -168,7 +127,8 @@ struct LabelView: View {
             }
             .padding(.vertical)
         }
-        .frame(width: 75)
+        .frame(minWidth: 60)
+        .frame(maxWidth: 75)
         .background(
             .ultraThickMaterial
         )
@@ -177,5 +137,7 @@ struct LabelView: View {
 }
 
 #Preview {
-    return WeatherFeedViewPresenter().compose()
+    let item = WeatherItem(id: 123, name: "London", country: "US", weatherDescription: "Cloudy", weatherIcon: "04d", temp: 12, feelsLike: 12, tempMin: 12, tempMax: 12, pressure: 12, humidity: 12, visibility: 12, windSpeed: 12, rain: 21, dt: 212, clouds: 232, timezone: 213123131)
+    
+    return WeatherCard(.init(item: item))
 }

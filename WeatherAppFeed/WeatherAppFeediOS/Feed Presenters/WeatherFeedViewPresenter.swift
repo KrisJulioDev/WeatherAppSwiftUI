@@ -54,15 +54,4 @@ public class WeatherFeedViewPresenter: ObservableObject,
     public func display(_ viewModel: WeatherFeedErrorViewModel) {
         errorViewModel.error = viewModel.error
     }
-}
-
-extension WeatherFeedViewPresenter {
-    func addWeather() {
-        let viewModel = WeatherItemViewModel(item: testItem(id: (0...1000).randomElement()!))
-        display(viewModel)
-    }
-    
-    private func testItem(id: Int) -> WeatherItem {
-        WeatherItem(id: id, name: "London", country: "US", temp: 271.79, feelsLike: 271.79, tempMin: 270.21, tempMax: 273.13, pressure: 1000, humidity: 84, visibility: 10000, windSpeed: 0.89, rain: 0.94, dt: 1705450380, clouds: 83, timezone: 0)
-    }
-}
+} 

@@ -26,13 +26,7 @@ struct WeatherFeed: View {
         ZStack {
             BackgroundImageView()
             
-            VStack {
-                withAnimation {
-                    WeatherErrorView(viewModel: errorViewModel,
-                                     tapHandler: didTapError)
-                }
-                viewModel.feed(with: presenter.itemViewModels)
-            }
+            viewModel.feed(with: presenter.itemViewModels)
             
             SearchBarView(searchCallback: showPopupToggle)
         }
@@ -43,6 +37,10 @@ struct WeatherFeed: View {
             
             SearchPopupView(isPresented: $showSearchPopup,
                             viewModel: SearchPopupViewModel(searchCallBack: search))
+            
+            WeatherErrorView(viewModel: errorViewModel,
+                             tapHandler: didTapError)
+                .frame(maxHeight: .infinity, alignment: .top) 
         }
     }
       

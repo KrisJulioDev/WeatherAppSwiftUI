@@ -26,7 +26,9 @@ public final class WeatherItemMapper {
         private let cod: Int
         
         var weatherItem: WeatherItem {
-            WeatherItem(id: id, name: name, country: sys.country, temp: main.temp, feelsLike: main.feels_like, tempMin: main.temp_min, tempMax: main.temp_max, pressure: main.pressure, humidity: main.humidity, visibility:visibility , windSpeed: wind.speed, rain: rain?.lh, dt: dt, clouds: clouds.all, timezone: timezone)
+            WeatherItem(id: id, name: name, country: sys.country, 
+                        weatherDescription: weather.first?.description, weatherIcon: weather.first?.icon,
+                        temp: main.temp, feelsLike: main.feels_like, tempMin: main.temp_min, tempMax: main.temp_max, pressure: main.pressure, humidity: main.humidity, visibility:visibility , windSpeed: wind.speed, rain: rain?.lh, dt: dt, clouds: clouds.all, timezone: timezone)
         }
     }
     
@@ -91,11 +93,11 @@ extension WeatherItemMapper {
     }
 
     private struct Sys: Codable {
-        let type: Int
-        let id: Int
+        let type: Int?
+        let id: Int?
         let country: String
-        let sunrise: Int
-        let sunset: Int
+        let sunrise: Int?
+        let sunset: Int?
     }
 
 }

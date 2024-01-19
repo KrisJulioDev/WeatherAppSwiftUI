@@ -21,10 +21,12 @@ public struct EmptyWeatherView: View {
             Label(viewModel.title, systemImage: "cloud.sun")
         } description: {
             Text(viewModel.discoverString)
-        } actions: {
-            Button(viewModel.searchString) {
-                callback()
-            }
+        } actions: { 
+            Button(action: { callback() }, label: {
+                Text(viewModel.searchString)
+                    .padding(.vertical, 5)
+                    .padding(.horizontal, 5)
+            })
             .buttonStyle(.borderedProminent)
         }
         .background(
@@ -56,3 +58,7 @@ private struct EmptyWeatherViewModel {
     }
     
 } 
+
+#Preview {
+    EmptyWeatherView(callback: {})
+}

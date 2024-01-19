@@ -43,7 +43,7 @@ struct WeatherErrorView: View {
                 VStack {
                     Text(message)
                         .foregroundStyle(.white)
-                        .font(.title3.monospaced())
+                        .font(.headline)
                         .frame(maxWidth: .infinity)
                         .frame(height: 40)
                         .multilineTextAlignment(.center)
@@ -54,4 +54,4 @@ struct WeatherErrorView: View {
             })
         }
     }
-} 
+}
