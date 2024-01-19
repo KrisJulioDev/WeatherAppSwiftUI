@@ -32,7 +32,7 @@ public class RemoteFeedLoader {
     public func load(from country: String) async throws -> WeatherItem {
         let url = FeedEndpoint
             .getWeather(country)
-            .url(baseURL: baseURL, apiKey: APIKey)
+            .url(baseURL: baseUrl, apiKey: apiKey)
             
         let (data, response) = try await httpClient.get(from: url)
         
