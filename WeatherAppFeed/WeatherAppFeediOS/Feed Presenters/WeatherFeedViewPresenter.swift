@@ -40,14 +40,9 @@ public class WeatherFeedViewPresenter: ObservableObject,
     public init() {}
     
     public func compose() -> some View {
-        WeatherFeed(title: title)
-            .navigationTitle("Weather App")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarBackground(Color(uiColor: .systemBackground), for: .navigationBar)
+        WeatherFeed()
             .environmentObject(self)
             .environmentObject(errorViewModel)
-    
     }
     
     public func display(_ viewModels: [WeatherItemViewModel]) {

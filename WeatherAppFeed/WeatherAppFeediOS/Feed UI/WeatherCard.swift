@@ -23,20 +23,22 @@ struct WeatherCard: View {
                         Text(viewModel.name)
                             .font(.title)
                             .foregroundStyle(.primary)
-                            .fontWeight(.bold) 
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Text(viewModel.currentTimeTitle)
                             .foregroundStyle(.secondary)
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .padding(.top, 0.1)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Text(viewModel.currentTime)
                             .font(.title)
                             .foregroundStyle(.primary)
                             .fontWeight(.semibold)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    } 
                     
                     VStack {
                         AsyncImage(url: viewModel.weatherIcon) { image in

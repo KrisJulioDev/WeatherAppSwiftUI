@@ -8,18 +8,28 @@
 import SwiftUI
 import WeatherAppFeed
 
+struct WeatherFeedViewModel {
+    
+    var navColor: Color {
+        Color("navColor", bundle: Bundle.feed)
+    }
+    
+    var title: String {
+        NSLocalizedString("FEED_VIEW_TITLE",
+            tableName: "Feed",
+            bundle: Bundle(for: WeatherFeedViewPresenter.self),
+            comment: "Title for the feed view")
+    }
+}
+
 struct WeatherFeed: View {
     public typealias SearchCallBack = ((String) -> Void)
     private typealias WeatherError = WeatherFeedErrorViewModel
+    private let viewModel = WeatherFeedViewModel()
     
     @EnvironmentObject var presenter: WeatherFeedViewPresenter
     @EnvironmentObject var errorViewModel: WeatherFeedErrorViewModel
     @State private var showSearchPopup: Bool = false
-    private let title: String
-    
-    public init(title: String) {
-        self.title = title
-    }
     
     var body: some View {
         ZStack {
@@ -38,6 +48,10 @@ struct WeatherFeed: View {
             WeatherErrorView(viewModel: errorViewModel, tapHandler: resetError)
                 .frame(maxHeight: .infinity, alignment: .top)
         }
+        .navigationTitle(Text(viewModel.title).foregroundStyle(.white))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(viewModel.navColor, for: .navigationBar)
     }
 }
 

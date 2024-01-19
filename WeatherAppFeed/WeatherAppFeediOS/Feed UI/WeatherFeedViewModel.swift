@@ -10,7 +10,7 @@ import SwiftUI
 struct FeedListView: View {
     let items: [WeatherItemViewModel]
     
-    var body: some View {
+    var body: some View { 
         List(items, id: \.id) { model in
             WeatherCard(model.viewModel)
                 .listRowSeparator(.hidden)
@@ -19,6 +19,7 @@ struct FeedListView: View {
         .listStyle(.plain)
         .background(.clear)
         .safeAreaPadding(.vertical, 70)
+        
     }
 }
 

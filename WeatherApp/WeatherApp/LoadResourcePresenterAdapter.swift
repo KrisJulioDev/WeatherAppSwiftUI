@@ -28,7 +28,7 @@ public class LoadResourcePresenterAdapter {
     
     public func loadInitialResource() async {
         if let localData = try? localLoader.load() {
-            currentData = localData 
+            currentData = localData
             await setDisplayWith(currentData)
         }
     }
