@@ -60,7 +60,7 @@ struct WeatherCardViewModel {
     var weatherInfo: [WeatherInfo] {
         [
             WeatherInfo(title: "Feels",
-                        value: String(item.feelsLike),
+                        value: String(kelvinToCelsius(item.feelsLike)) + "°C",
                         image: Image(systemName: "thermometer.medium")),
             
             WeatherInfo(title: "Humid",
@@ -81,5 +81,8 @@ struct WeatherCardViewModel {
         ]
         .filter { $0.value != nil }
     }
-     
+    
+    private func kelvinToCelsius(_ kelvin: Double) -> Int {
+        return Int(kelvin - 273.15)
+    }
 }
