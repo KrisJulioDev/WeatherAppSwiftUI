@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
-
-class WeatherFeedViewModel: ObservableObject {
-      
-    func feed(with items: [WeatherItemViewModel]) -> some View {
+  
+struct FeedListView: View {
+    let items: [WeatherItemViewModel]
+    
+    var body: some View {
         List(items, id: \.id) { model in
             WeatherCard(model.viewModel)
                 .listRowSeparator(.hidden)

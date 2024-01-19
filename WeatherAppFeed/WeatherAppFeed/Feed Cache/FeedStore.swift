@@ -7,10 +7,10 @@
 
 import Foundation
 
-public typealias CachedFeed = (feed: [WeatherItem], timestamp: Date)
+public typealias CachedFeed = [WeatherItem]
  
 public protocol FeedStore {
     func deleteCachedFeed() throws
-    func insert(_ feed: [WeatherItem], timestamp: Date) throws
+    func insert(_ feed: [WeatherItem]) throws
     func retrieve() throws -> CachedFeed?
 }

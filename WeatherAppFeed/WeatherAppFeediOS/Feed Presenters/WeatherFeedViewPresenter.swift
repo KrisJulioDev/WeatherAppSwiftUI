@@ -26,7 +26,6 @@ public class WeatherFeedViewPresenter: ObservableObject,
     public typealias ResourceFeedErrorViewModel = WeatherFeedErrorViewModel
     
     @Published var itemViewModels: [WeatherItemViewModel] = []
-    @Published var feedViewModel = WeatherFeedViewModel()
     @Published var errorViewModel = WeatherFeedErrorViewModel()
     
     private var title: String {
@@ -42,16 +41,20 @@ public class WeatherFeedViewPresenter: ObservableObject,
     
     public func compose() -> some View {
         WeatherFeed(title: title)
+            .navigationTitle("Weather App")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(Color(uiColor: .systemBackground), for: .navigationBar)
             .environmentObject(self)
-            .environmentObject(feedViewModel)
             .environmentObject(errorViewModel)
+    
     }
     
-    public func display(_ viewModel: WeatherItemViewModel) {
-        itemViewModels.append(viewModel)
+    public func display(_ viewModels: [WeatherItemViewModel]) {
+        itemViewModels = viewModels
     }
     
     public func display(_ viewModel: WeatherFeedErrorViewModel) {
         errorViewModel.error = viewModel.error
     }
-} 
+}

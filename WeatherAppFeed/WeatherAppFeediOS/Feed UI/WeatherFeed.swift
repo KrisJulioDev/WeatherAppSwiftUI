@@ -13,7 +13,6 @@ struct WeatherFeed: View {
     private typealias WeatherError = WeatherFeedErrorViewModel
     
     @EnvironmentObject var presenter: WeatherFeedViewPresenter
-    @EnvironmentObject var viewModel: WeatherFeedViewModel
     @EnvironmentObject var errorViewModel: WeatherFeedErrorViewModel
     @State private var showSearchPopup: Bool = false
     private let title: String
@@ -25,9 +24,7 @@ struct WeatherFeed: View {
     var body: some View {
         ZStack {
             BackgroundImageView()
-            
-            viewModel.feed(with: presenter.itemViewModels)
-            
+            FeedListView(items: presenter.itemViewModels)
             SearchBarView(searchCallback: showPopupToggle)
         }
         .overlay {
@@ -38,14 +35,16 @@ struct WeatherFeed: View {
             SearchPopupView(isPresented: $showSearchPopup,
                             viewModel: SearchPopupViewModel(searchCallBack: search))
             
-            WeatherErrorView(viewModel: errorViewModel,
-                             tapHandler: didTapError)
-                .frame(maxHeight: .infinity, alignment: .top) 
+            WeatherErrorView(viewModel: errorViewModel, tapHandler: resetError)
+                .frame(maxHeight: .infinity, alignment: .top)
         }
     }
-      
+}
+
+extension WeatherFeed {
     private func search(input: String) {
         Task {
+            await resetError()
             try await presenter.fetchWeather?(input)
         }
     }
@@ -56,7 +55,7 @@ struct WeatherFeed: View {
         }
     }
     
-    private func didTapError() async {
+    private func resetError() async {
         await MainActor.run {
             presenter.display(WeatherError(.noError))
         }

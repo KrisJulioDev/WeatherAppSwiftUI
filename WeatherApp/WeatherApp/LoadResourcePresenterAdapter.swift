@@ -11,44 +11,64 @@ import WeatherAppFeediOS
 
 public class LoadResourcePresenterAdapter {
     
-    private let loader: RemoteFeedLoader
+    private let remoteLoader: RemoteFeedLoader
+    private let localLoader: LocalFeedLoader
     private let presenter: WeatherFeedViewPresenter
     
-    private enum LoadError: Error {
-        case invalidAPIKey
-    }
+    private var currentData: [WeatherItem] = []
     
-    public init(loader: RemoteFeedLoader, presenter: WeatherFeedViewPresenter) {
-        self.loader = loader
+    public init(remoteLoader: RemoteFeedLoader,
+                localLoader: LocalFeedLoader,
+                presenter: WeatherFeedViewPresenter) {
+        self.remoteLoader = remoteLoader
+        self.localLoader = localLoader
         self.presenter = presenter
         self.presenter.fetchWeather = fetchWeather
     }
-     
+    
+    public func loadInitialResource() async {
+        if let localData = try? localLoader.load() {
+            currentData = localData 
+            await setDisplayWith(currentData)
+        }
+    }
+    
     private func fetchWeather(for country: String) async throws {
         Task {
             do {
-                let result = try await loader.load(from: country)
-                
-                await MainActor.run {
-                    presenter.display(WeatherItemViewModel(item: result))
-                }
+                let result = try await remoteLoader.load(from: country)
+                await didFinishWithResult(result)
             } catch {
-                guard let error = error as? RemoteFeedLoader.ViewError else {
-                    return
-                }
-                
-                await MainActor.run {
-                    presenter.display(WeatherFeedErrorViewModel(error))
-                }
+                await didFinishWithError(error)
             }
         }
     }
     
     public func composeFeed() -> some View {
         return presenter.compose()
-            .navigationTitle("Weather App")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarBackground(.black.opacity(0.05), for: .navigationBar)
+    }
+}
+
+extension LoadResourcePresenterAdapter {
+    private func didFinishWithResult(_ result: WeatherItem) async {
+        currentData.append(result)
+        try? localLoader.save(currentData)
+        await setDisplayWith(currentData)
+    }
+    
+    private func setDisplayWith(_ items: [WeatherItem]) async {
+        await MainActor.run {
+            presenter.display(items.map { WeatherItemViewModel(item: $0) })
+        }
+    }
+    
+    private func didFinishWithError(_ error: Error) async {
+        guard let error = error as? RemoteFeedLoader.ViewError else {
+            return
+        }
+        
+        await MainActor.run {
+            presenter.display(WeatherFeedErrorViewModel(error))
+        }
     }
 }

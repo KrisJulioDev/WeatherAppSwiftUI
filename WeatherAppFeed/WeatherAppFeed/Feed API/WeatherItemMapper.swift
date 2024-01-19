@@ -14,7 +14,7 @@ public final class WeatherItemMapper {
         private let weather: [Weather]
         private let base: String
         private let main: Main
-        private let visibility: Int
+        private let visibility: Double
         private let wind: Wind
         private let clouds: Clouds
         private let dt: Int
@@ -28,7 +28,7 @@ public final class WeatherItemMapper {
         var weatherItem: WeatherItem {
             WeatherItem(id: id, name: name, country: sys.country, 
                         weatherDescription: weather.first?.description, weatherIcon: weather.first?.icon,
-                        temp: main.temp, feelsLike: main.feels_like, tempMin: main.temp_min, tempMax: main.temp_max, pressure: main.pressure, humidity: main.humidity, visibility:visibility , windSpeed: wind.speed, rain: rain?.lh, dt: dt, clouds: clouds.all, timezone: timezone)
+                        temp: main.temp, feelsLike: main.feels_like, pressure: main.pressure, humidity: main.humidity, visibility:visibility , windSpeed: wind.speed, rain: rain?.lh, dt: dt, clouds: clouds.all)
         }
     }
     
@@ -76,8 +76,8 @@ extension WeatherItemMapper {
         let feels_like: Double
         let temp_min: Double
         let temp_max: Double
-        let pressure: Int
-        let humidity: Int
+        let pressure: Double
+        let humidity: Double
     }
 
     private struct Wind: Codable {

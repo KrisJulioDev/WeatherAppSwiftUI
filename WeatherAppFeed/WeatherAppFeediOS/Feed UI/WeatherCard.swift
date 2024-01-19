@@ -23,23 +23,20 @@ struct WeatherCard: View {
                         Text(viewModel.name)
                             .font(.title)
                             .foregroundStyle(.primary)
-                            .fontWeight(.bold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .fontWeight(.bold) 
                         
                         Text(viewModel.currentTimeTitle)
                             .foregroundStyle(.secondary)
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.top, 0.1)
                         
                         Text(viewModel.currentTime)
                             .font(.title)
                             .foregroundStyle(.primary)
                             .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                     VStack {
                         AsyncImage(url: viewModel.weatherIcon) { image in
@@ -137,7 +134,7 @@ struct LabelView: View {
 }
 
 #Preview {
-    let item = WeatherItem(id: 123, name: "London", country: "US", weatherDescription: "Cloudy", weatherIcon: "04d", temp: 12, feelsLike: 12, tempMin: 12, tempMax: 12, pressure: 12, humidity: 12, visibility: 12, windSpeed: 12, rain: 21, dt: 212, clouds: 232, timezone: 213123131)
+    let item = WeatherItem(id: 123, name: "London", country: "US", weatherDescription: "Cloudy", weatherIcon: "04d", temp: 12, feelsLike: 12, pressure: 12, humidity: 12, visibility: 12, windSpeed: 12, rain: 21, dt: 212, clouds: 232)
     
     return WeatherCard(.init(item: item))
 }
