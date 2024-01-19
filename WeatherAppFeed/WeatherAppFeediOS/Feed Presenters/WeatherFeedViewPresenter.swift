@@ -36,6 +36,7 @@ public class WeatherFeedViewPresenter: ObservableObject,
     }
     
     public var fetchWeather: ((String) async throws -> Void)?
+    public var deleteWeather: ((WeatherItem) async -> Void)?
     
     public init() {}
     

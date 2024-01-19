@@ -8,6 +8,7 @@
 import Foundation 
 
 public struct WeatherItem: Hashable {
+    
     public let id: Int
     public let name: String
     public let country: String
@@ -40,5 +41,9 @@ public struct WeatherItem: Hashable {
         self.rain = rain
         self.dt = dt
         self.clouds = clouds
+    }
+    
+    static public func ==(lhs: WeatherItem, rhs: WeatherItem) -> Bool {
+        return lhs.id == rhs.id
     }
 }

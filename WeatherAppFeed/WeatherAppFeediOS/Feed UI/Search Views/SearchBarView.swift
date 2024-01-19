@@ -36,10 +36,8 @@ struct SearchBarView: View {
             })
             .contentTransition(.opacity)
         }
-        .frame(maxWidth: .infinity, 
-               maxHeight: .infinity,
-               alignment: .bottomTrailing)
-        .padding(.bottom, 100)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+        .padding(.bottom, 50)
         .padding(.trailing, 15)
         .safeAreaPadding()
     }

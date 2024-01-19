@@ -18,10 +18,11 @@ struct WeatherApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                loadResourcePresenter.composeFeed().onAppear {
-                    Task {
-                        await loadResourcePresenter.loadInitialResource()
-                    }
+                loadResourcePresenter.composeFeed()
+            }
+            .onAppear {
+                Task {
+                    await loadResourcePresenter.loadInitialResource()
                 }
             }
         }

@@ -33,8 +33,12 @@ struct WeatherFeed: View {
     
     var body: some View {
         ZStack {
-            BackgroundImageView()
-            FeedListView(items: presenter.itemViewModels)
+            FeedListView(items: presenter.itemViewModels,
+                         headerError: WeatherErrorView(viewModel: errorViewModel, 
+                                                       tapHandler: resetError),
+                         delete: presenter.deleteWeather,
+                         refresh: search)
+            
             SearchBarView(searchCallback: showPopupToggle)
         }
         .overlay {
@@ -45,13 +49,13 @@ struct WeatherFeed: View {
             SearchPopupView(isPresented: $showSearchPopup,
                             viewModel: SearchPopupViewModel(searchCallBack: search))
             
-            WeatherErrorView(viewModel: errorViewModel, tapHandler: resetError)
-                .frame(maxHeight: .infinity, alignment: .top)
+            
+                //.frame(maxHeight: .infinity, alignment: .top)
         }
-        .navigationTitle(Text(viewModel.title).foregroundStyle(.white))
+        .navigationTitle(viewModel.title)
+        .toolbarColorScheme(.dark, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarBackground(viewModel.navColor, for: .navigationBar)
     }
 }
 
