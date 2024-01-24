@@ -60,19 +60,15 @@ struct WeatherCardViewModel {
     var weatherInfo: [WeatherInfo] {
         [
             WeatherInfo(title: "Feels",
-                        value: String(kelvinToCelsius(item.feelsLike)) + "°C",
+                        value: GlobalFormatter.temperature(from: item.feelsLike),
                         image: Image(systemName: "thermometer.medium")),
             
             WeatherInfo(title: "Humid",
-                        value: String(item.humidity) + "%",
+                        value: GlobalFormatter.humidity(from: item.humidity),
                         image: Image(systemName: "humidity.fill")),
             
-            WeatherInfo(title: "Rain",
-                        value: item.rain == nil ? nil : String(item.rain!),
-                        image: Image(systemName: "cloud.rain.fill")),
-            
             WeatherInfo(title: "Wind",
-                        value: String(item.windSpeed),
+                        value: GlobalFormatter.windSpeed(from: item.windSpeed),
                         image: Image(systemName: "wind")),
             
             WeatherInfo(title: "Clouds",
@@ -82,7 +78,27 @@ struct WeatherCardViewModel {
         .filter { $0.value != nil }
     }
     
-    private func kelvinToCelsius(_ kelvin: Double) -> Int {
-        return Int(kelvin - 273.15)
+}
+
+struct GlobalFormatter {
+    static func temperature(from value: Double) -> String {
+        let formatter = MeasurementFormatter()
+        let temperature = Measurement<UnitTemperature>(value: value, unit: .kelvin)
+        formatter.numberFormatter.maximumFractionDigits = 0
+        return formatter.string(from: temperature)
+    }
+    
+    static func windSpeed(from value: Double) -> String {
+        let formatter = MeasurementFormatter()
+        let speed = Measurement<UnitSpeed>(value: value, unit: .kilometersPerHour)
+        formatter.unitStyle = .short
+        formatter.numberFormatter.maximumFractionDigits = 1
+        return formatter.string(from: speed)
+    }
+    
+    static func humidity(from value: Double) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        return formatter.string(from: NSNumber(value: value * 0.01))
     }
 }
